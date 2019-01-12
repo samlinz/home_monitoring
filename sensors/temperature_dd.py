@@ -15,13 +15,13 @@ parser = argparse.ArgumentParser(description='Measure values from DHT22 sensor a
 parser.add_argument('--nocloud', action='store_true', help='If present, don\'t forward to cloud')
 parser.add_argument('--storefile', action='store_true', help='If present, save into file')
 parser.add_argument('--path', help='The directory into which the measurements are also sent')
-parser.add_argument('--credentials', required=True, help='The DD credentials file')
+parser.add_argument('--credentials', help='The DD credentials file')
 parser.add_argument('--interval', type=int, help='The interval in seconds at which measurements are recorded and sent')
 parser.add_argument('--pin', type=int, required=True, help='BCM numbering scheme GPIO pin number to use')
 parsed = parser.parse_args()
 
 # Credentials file.
-cred_file = parsed.credentials
+cred_file = parsed.credentials if parsed.credentials is not None else "./credentials.json"
 # Flag of whether to use clod storage or not.
 USE_CLOUD = not parsed.nocloud
 # Flag whether to save to filesystem.
