@@ -33,7 +33,7 @@ Decide which fraction of pictures saved to file system you want to send to S3, t
 Create a base directory for captures and get the absolute path if using filesystem.
 
 Create AWS account, create S3 bucket, give account access to bucket and get the keys if using S3.
-Save the keys into _credentials.json_
+Save the keys into _credentials.json_ as {"aws_key_id": "XXX", "aws_access_key": "XXX"}.
 
 ```
 For S3:
