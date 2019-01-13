@@ -137,8 +137,6 @@ def get_readings_task():
             send_meas_filesystem(temperature=float(temperature)
                                  , humidity=float(humidity))
 
-        # Send values to DataDog.
-
     except Exception as err:
         print('Exception while reading/sending measurements: {0}'.format(
             err
