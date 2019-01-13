@@ -38,7 +38,11 @@ if CAPTURE_INTERVAL_SECONDS < 1:
     print('Invalid interval {0}'.format(CAPTURE_INTERVAL_SECONDS))
     sys.exit(1)
 
-CREDENTIALS_FILE = parsed.credentials if parsed.credentials is not None else './credentials.json'
+DEFAULT_CREDENTIALS_FILE = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    'credentials.json'
+)
+CREDENTIALS_FILE = parsed.credentials if parsed.credentials is not None else DEFAULT_CREDENTIALS_FILE
 if not os.path.exists(CREDENTIALS_FILE):
     print('Credentials file does not exists')
     sys.exit(1)

@@ -21,7 +21,11 @@ parser.add_argument('--pin', type=int, required=True, help='BCM numbering scheme
 parsed = parser.parse_args()
 
 # Credentials file.
-cred_file = parsed.credentials if parsed.credentials is not None else "./credentials.json"
+DEFAULT_CREDENTIALS_FILE = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    'credentials.json'
+)
+cred_file = parsed.credentials if parsed.credentials is not None else DEFAULT_CREDENTIALS_FILE
 # Flag of whether to use clod storage or not.
 USE_CLOUD = not parsed.nocloud
 # Flag whether to save to filesystem.
@@ -69,7 +73,6 @@ except:
 
 # Settings
 SENSOR_TYPE = Adafruit_DHT.DHT22
-SENSOR_PIN_BCM = 17
 
 # Initialize datadog connection.
 datadog.initialize(DD_API_KEY, DD_APP_KEY)
