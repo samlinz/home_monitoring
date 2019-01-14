@@ -156,7 +156,13 @@ def capture_task():
                 print('Passing the capture to uploader {0}'.format(
                     uploader.__class__.__name__
                 ))
-                uploader.upload(TEMP_FILE_NAME, target_file_name)
+                try:
+                    uploader.upload(TEMP_FILE_NAME, target_file_name)
+                except Exception as err:
+                    print('Exception in uploader {0}: {1}'.format(
+                        uploader.__class__.__name__,
+                        err
+                    ))
     except Exception as err:
         print('Exception while running capture/upload sequence: {0}'.format(err))
 
