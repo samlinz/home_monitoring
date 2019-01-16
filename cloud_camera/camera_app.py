@@ -121,7 +121,7 @@ def take_photo():
         stderr = process_result.stdout
 
         if code != 0:
-            print('Non-ok return code {0} from capture subprocess')
+            print('Non-ok return code {0} from capture subprocess'.format(code))
             print('STDOUT: {0}'.format(stdout))
             print('STDERR: {0}'.format(stderr))
             return False
